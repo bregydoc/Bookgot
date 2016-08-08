@@ -29,6 +29,7 @@ import (
 	"net/url"
 	"strconv"
 	"time"
+	
 )
 
 type PackPubUser struct {
@@ -160,7 +161,7 @@ func GetUrlOfFreeBook() (string, error) {
 	return PackPubUrl + fburl, nil
 }
 
-func PushNewFreeBook(email, password string) bool {
+func pullNewFreeBook(email, password string) bool {
 	cookieJar, _ := cookiejar.New(nil)
 
 	client := &http.Client{
@@ -307,3 +308,13 @@ func (user *PackPubUser) VerifyIfIHaveLastFreeBook() bool {
 	}
 	return false
 }
+
+func (user *PackPubUser) PullNewFreeBook() bool{
+	if pullNewFreeBook(user.Email, user.Password){
+		return true
+	}else{
+		return false
+	}
+}
+
+
