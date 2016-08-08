@@ -1,6 +1,5 @@
 # Bookgot
-Simple script for free books farm
-
+BookGot is a simple boot for farm free books from PACKPUB.COM
 ```go
 	func (user *PackPubUser) VerifyIfIHaveLastFreeBook() bool {
 		myBooks := user.GetNamesOfBooks()
@@ -18,3 +17,4 @@ Simple script for free books farm
 	}
 
 ```
+# Usage
