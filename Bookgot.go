@@ -180,8 +180,8 @@ func pullNewFreeBook(email, password string) bool {
 	res.Body.Close()
 	u, _ := url.Parse(PackPubUrl)
 	fmt.Println(client.Jar.Cookies(u))
-	fUrl, _ := GetUrlOfFreeBook()
-	fmt.Println(fUrl)
+	//fUrl, _ := GetUrlOfFreeBook()
+	//fmt.Println(fUrl)
 
 	pushableBook, _ := http.NewRequest("GET", fUrl, nil)
 
@@ -301,7 +301,7 @@ func (user *PackPubUser) VerifyIfIHaveLastFreeBook() bool {
 
 		comp := strings.Contains(book, actualFreeBook)
 		if comp {
-			fmt.Println(book, " is ", actualFreeBook)
+			//fmt.Println(book, " is ", actualFreeBook)
 			return true
 		}
 

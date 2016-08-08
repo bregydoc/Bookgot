@@ -88,20 +88,27 @@ import(
 )
 
 func main() {
-	userExample := Bookgot.CreateNewPBUser("email@domain.com", "password")
-	if ok := userExample.Login(); ok && userExample.Logged{
-		for{
-			newBook := false
-			for !newBook{
-				newBook = userExample.VerifyIfIHaveLastFreeBook()
-				fmt.Println("Update: no new free book", " - Actual free book: ", Bookgot.GetNameOfCurrentFreeBook())
-				timeLeft, _:= Bookgot.GetTimeForNewFreeBook()
-				fmt.Println("Time left for new free book: ", timeLeft.String())
+	userExample := Bookgot.CreateNewPBUser("example@domain.com", "password")
+	if userExample.Login() {
+		fmt.Println("Logged!")
+	}
+	for {
+		haveNewBook := userExample.VerifyIfIHaveLastFreeBook()
+
+		if haveNewBook{
+			haveNewBook = userExample.VerifyIfIHaveLastFreeBook()
+			timeAfter, _ := Bookgot.GetTimeForNewFreeBook()
+			fmt.Println("Not new free book, time for next book: ", timeAfter.String())
+		}else {
+			petition :=  userExample.PullNewFreeBook()
+			if petition{
+				fmt.Println("New free book added at your library")
+			}else{
+				fmt.Println("Error, verify your email and password")
 			}
 		}
-
+		
 	}
-	fmt.Println("No logged, check your email and password")
 
 }
 ```
