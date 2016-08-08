@@ -22,3 +22,14 @@ if ok := user.VerifyIfIHaveLastFreeBook(); ok{
 	fmt.Println("You are up to day")
 }
 ```
+
+If VerifyIfIHaveLastFreeBook() return false is because PackPub have a new free book and you not claim this.
+You can know the name of the current free book
+
+```go
+//...
+if ok := user.PullNewFreeBook(); ok{
+	fmt.Println("Ok, you have the last free book")
+}
+
+```
