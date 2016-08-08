@@ -17,7 +17,7 @@ import "github.com/bregydoc/Bookgot"
 Second create a User for Login in PackPub
 
 ```go
-user := CreateNewPBUser("example@email.com", "password")
+user := Bookgot.CreateNewPBUser("example@email.com", "password")
 ok := user.Login()
 if ok && user.Logged{
 	fmt.Println("User logged!")
@@ -49,7 +49,7 @@ If you want to know the list of books in your account, you can use the GetNamesO
 
 ```go
 //...
-user := CreateNewPBUser("example@email.com	","password")
+user := Bookgot.CreateNewPBUser("example@email.com","password")
 books := user.GetNamesOfBooks()
 for i, book := range books{
 	fmt.Println("Book ", i , " : ", book)
@@ -63,7 +63,7 @@ Return the name of last free book in PackPub.com
 
 ```go
 //...
-name := GetNameOfCurrentFreeBook()
+name := Bookgot.GetNameOfCurrentFreeBook()
 fmt.Println(name)
 
 ```
@@ -71,16 +71,38 @@ Return the time left for update the free book
 
 ```go
 //...
-timeLeft, _ := GetTimeForNewFreeBook()
+timeLeft, _ := Bookgot.GetTimeForNewFreeBook()
 fmt.Println(timeLeft.String())
 
 ```
 
-```go
-//...
-if ok := user.PullNewFreeBook(); ok{
-	fmt.Println("Ok, you have the last free book")
-}
 
+#Example for create a complete bot
+
+```go
+package main
+
+import(
+	"github.com/bregydoc/Bookgot"
+	"fmt"
+)
+
+func main() {
+	userExample := Bookgot.CreateNewPBUser("email@domain.com", "password")
+	if ok := userExample.Login(); ok && userExample.Logged{
+		for{
+			newBook := false
+			for !newBook{
+				newBook = userExample.VerifyIfIHaveLastFreeBook()
+				fmt.Println("Update: no new free book", " - Actual free book: ", Bookgot.GetNameOfCurrentFreeBook())
+				timeLeft, _:= Bookgot.GetTimeForNewFreeBook()
+				fmt.Println("Time left for new free book: ", timeLeft.String())
+			}
+		}
+
+	}
+	fmt.Println("No logged, check your email and password")
+
+}
 ```
 
