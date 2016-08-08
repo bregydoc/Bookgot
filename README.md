@@ -6,7 +6,7 @@ BookGot is a simple boot for farm free books from PACKTPUB.COM
 First create a User for Login in PackPub
 
 ```go
-user := CreateNewPBUser("username@email.com", "password")
+user := CreateNewPBUser("example@email.com", "password")
 ok := user.Login()
 if ok && user.Logged{
 	fmt.Println("User logged!")
@@ -33,3 +33,43 @@ if ok := user.PullNewFreeBook(); ok{
 }
 
 ```
+
+If you want to know the list of books in your account, you can use the GetNamesOfBooks() function
+
+```go
+//...
+user := CreateNewPBUser("example@email.com	","password")
+books := user.GetNamesOfBooks()
+for i, book := range books{
+	fmt.Println("Book ", i , " : ", book)
+}
+
+```
+
+# Other functions
+
+Return the name of last free book in PackPub.com
+
+```go
+//...
+name := GetNameOfCurrentFreeBook()
+fmt.Println(name)
+
+```
+Return the time left for update the free book
+
+```go
+//...
+timeLeft, _ := GetTimeForNewFreeBook()
+fmt.Println(timeLeft.String())
+
+```
+
+```go
+//...
+if ok := user.PullNewFreeBook(); ok{
+	fmt.Println("Ok, you have the last free book")
+}
+
+```
+
