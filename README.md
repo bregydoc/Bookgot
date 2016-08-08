@@ -1,9 +1,20 @@
 # Bookgot
 BookGot is a simple boot for farm free books from PACKTPUB.COM
 
+#Install
+```
+go get -u github.com/bregydoc/Bookgot
+```
+
 # Usage
 
-First create a User for Login in PackPub
+First import BookGot
+```go
+//...
+import "github.com/bregydoc/Bookgot"
+```
+
+Second create a User for Login in PackPub
 
 ```go
 user := CreateNewPBUser("example@email.com", "password")
