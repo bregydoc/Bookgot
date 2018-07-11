@@ -1,8 +1,8 @@
 package Bookgot
 /*
-	BookGot is a simple boot for farm free books from PackPub.com, your functionality is based in
-	verifying with multiple petitions if is available a new free book or no. This bot simulates be a client registered
-	with your credentials, and if you haven't the last free book BookGot automatically claim the book for you.
+	BookGot is a simple boot to farm free books from PackPub.com, its functionality is based in
+	verify with multiple requests and checking if exists a new free book. This bot simulates be a client registered
+	with your credentials, and if you dont have the last free book BookGot automatically claim the book for you.
 
 	Author: Bregy Esteban Malpartida Ramos
 	Date: 07 - 08 - 2016
